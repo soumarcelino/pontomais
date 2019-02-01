@@ -1,5 +1,5 @@
 ### Pontomais cards
-#### Simples projeto com objetivo de demonstrar o uso da API do pontomais para recuperar algumas informações relevantes
+Simples projeto com objetivo de demonstrar o uso da API do pontomais para recuperar algumas informações relevantes
 
 ##### Instalação
 
