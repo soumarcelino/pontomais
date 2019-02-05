@@ -1,5 +1,6 @@
 import React from 'react'
 import { pontomaisApi } from '../../api'
+import { Remaining, Worked } from '../Cards'
 
 const styles = {
     cards : {
@@ -14,19 +15,20 @@ export default class List extends React.Component {
     }
     async componentDidMount () {
         const data = await pontomaisApi.getWorkDay()
-        const time_cards = data.work_day.time_cards
+        const time_cards = data.work_day ? data.work_day.time_cards : []
         this.setState({time_cards})
     }
     getCards = () => {
         return this.state.time_cards.map( (card, index) =>
                 <span key={index} style={styles.cards}>
                     <b>Data</b> {card.date} <br/>
-                    <b>Hora</b> {card.time} <br/>
                 </span>)
     }
     render() {
+        const { time_cards } = this.state
         return (
             <div>
+                <Worked time={ time_cards }/> <Remaining time={ time_cards }/>
                 {this.getCards()}
             </div>
         )
