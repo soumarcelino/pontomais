@@ -2,6 +2,12 @@
 import moment from 'moment'
 
 const getWorkedTime = (workDay, inMoment = false ) => {
+    if (workDay.length % 2 !== 0) {
+        const date = new Date()
+        const time = `${date.getHours()}:${date.getMinutes()}`
+        workDay.push({ time })
+    }
+    
     let milliseconds = 0
     for (let i = 0; i < workDay.length; i++) {
         milliseconds += moment.duration(moment(workDay[i+1].time,"HH:mm").diff(moment(workDay[i].time,"HH:mm"))).valueOf()

@@ -21,14 +21,16 @@ export default class List extends React.Component {
     getCards = () => {
         return this.state.time_cards.map( (card, index) =>
                 <span key={index} style={styles.cards}>
-                    <b>Data</b> {card.date} <br/>
+                    <b>Hora</b> {card.time} <br/>
                 </span>)
     }
     render() {
         const { time_cards } = this.state
         return (
             <div>
-                <Worked time={ time_cards }/> <Remaining time={ time_cards }/>
+                <Worked time={ time_cards }/>
+                <Remaining time={ time_cards }/>
+                <br/>
                 {this.getCards()}
             </div>
         )
