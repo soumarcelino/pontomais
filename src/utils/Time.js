@@ -31,8 +31,19 @@ const getStatus = ( workDay ) => {
     return { overtime: false }
 }
 
+
+const getToday = () => {
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    return `${yyyy}-${mm}-${dd}`
+};
+
+
 export default {
     getWorkedTime,
     getTimeLeft,
-    getStatus
+    getStatus,
+    getToday
 }

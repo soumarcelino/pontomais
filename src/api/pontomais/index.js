@@ -1,13 +1,6 @@
 import config from '../../config'
 import axios from 'axios'
-
-const getToday = () => {
-    const today = new Date();
-    const dd = today.getDate();
-    const mm = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
-    return `${yyyy}-${mm}-${dd}`
-};
+import { Time } from '../../utils'
 
 const pontomaisApi = axios.create({
     baseURL: 'https://api.pontomais.com.br/api/',
@@ -16,7 +9,7 @@ const pontomaisApi = axios.create({
     
 });
 
-async function getWorkDay( date = getToday() ) {
+async function getWorkDay( date = Time.getToday() ) {
     try {
       const request = await pontomaisApi.get(`/time_card_control/current/work_days/${date}`)
       return request.data
